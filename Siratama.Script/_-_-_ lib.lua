@@ -37,6 +37,5 @@ task.wait(3)
 TweenService:Create(frame, TweenInfo.new(1), {BackgroundTransparency = 1}):Play()
 TweenService:Create(textLabel, TweenInfo.new(1), {TextTransparency = 1}):Play()
 
--- 少し待ってから削除
 task.wait(1.5)
 screenGui:Destroy()
