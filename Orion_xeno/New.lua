@@ -5,11 +5,26 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
 
+-- デバッグ用関数
+local function debugPrint(...)
+    local args = {...}
+    local output = ""
+    for i, v in ipairs(args) do
+        output = output .. tostring(v) .. "\t"
+    end
+    print("[OrionLib Debug]", output)
+    return ...
+end
+
 local OrionLib = {
     Elements = {},
     ThemeObjects = {},
     Connections = {},
     Flags = {},
+    Debug = {
+        Enabled = true,
+        Print = debugPrint
+    },
     Themes = {
         Default = {
             Main = Color3.fromRGB(25, 25, 25),
@@ -22,30 +37,33 @@ local OrionLib = {
     },
     SelectedTheme = "Default",
     Folder = nil,
-    SaveCfg = false
+    SaveCfg = false,
+    ToggleDebug = function(self, enabled)
+        self.Debug.Enabled = enabled
+        self.Debug.Print("Debug mode:", enabled and "ON" or "OFF")
+    end
 }
 
 --Feather Icons https://github.com/evoincorp/lucideblox/tree/master/src/modules/util - Created by-- Feather Icons
 local Icons = {
-    -- A
     ["accessibility"] = "rbxassetid://10709751939",
-    ["activity"] = "rbxassetid://10709752035",
-    ["airvent"] = "rbxassetid://10709752131",
-    ["airplay"] = "rbxassetid://10709752254",
-    ["alarmcheck"] = "rbxassetid://10709752405",
-    ["alarmclock"] = "rbxassetid://10709752630",
-    ["alarmclockoff"] = "rbxassetid://10709752508",
-    ["alarmminus"] = "rbxassetid://10709752732",
-    ["alarmplus"] = "rbxassetid://10709752825",
-    ["album"] = "rbxassetid://10709752906",
-    ["alertcircle"] = "rbxassetid://10709752996",
-    ["alertoctagon"] = "rbxassetid://10709753064",
-    ["alerttriangle"] = "rbxassetid://10709753149",
-    ["aligncenter"] = "rbxassetid://10709753570",
-    ["aligncenterhorizontal"] = "rbxassetid://10709753272",
-    ["aligncentervertical"] = "rbxassetid://10709753421",
-    ["alignendhorizontal"] = "rbxassetid://10709753692",
-    ["alignendvertical"] = "rbxassetid://10709753808",
+	["activity"] = "rbxassetid://10709752035",
+	["airvent"] = "rbxassetid://10709752131",
+	["airplay"] = "rbxassetid://10709752254",
+	["alarmcheck"] = "rbxassetid://10709752405",
+	["alarmclock"] = "rbxassetid://10709752630",
+	["alarmclockoff"] = "rbxassetid://10709752508",
+	["alarmminus"] = "rbxassetid://10709752732",
+	["alarmplus"] = "rbxassetid://10709752825",
+	["album"] = "rbxassetid://10709752906",
+	["alertcircle"] = "rbxassetid://10709752996",
+	["alertoctagon"] = "rbxassetid://10709753064",
+	["alerttriangle"] = "rbxassetid://10709753149",
+	["aligncenter"] = "rbxassetid://10709753570",
+	["aligncenterhorizontal"] = "rbxassetid://10709753272",
+	["aligncentervertical"] = "rbxassetid://10709753421",
+	["alignendhorizontal"] = "rbxassetid://10709753692",
+	["alignendvertical"] = "rbxassetid://10709753808",
 	["alignhorizontaldistributecenter"] = "rbxassetid://10747779791",
 	["alignhorizontaldistributeend"] = "rbxassetid://10747784534",
 	["alignhorizontaldistributestart"] = "rbxassetid://10709754118",
