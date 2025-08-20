@@ -1,9 +1,23 @@
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
-local LocalPlayer = game:GetService("Players").LocalPlayer
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
+
+-- マウス入力を処理する関数
+local function processMouseInput(inputObject, gameProcessed)
+    if gameProcessed then return end
+    OrionLib.Debug.Print("Mouse Click at:", inputObject.Position)
+end
+
+-- マウスクリックのイベントを設定
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        processMouseInput(input, gameProcessed)
+    end
+end)
 
 -- デバッグ用関数
 local function debugPrint(...)
