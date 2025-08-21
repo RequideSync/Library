@@ -14,7 +14,7 @@ local OrionLib = {
 		Default = {
 			Main = Color3.fromRGB(25, 25, 25),
 			Second = Color3.fromRGB(32, 32, 32),
-			Stroke = Color3.fromRGB(60, 60, 60),
+			Stroke = Color3.fromRGB(43, 156, 255),
 			Divider = Color3.fromRGB(60, 60, 60),
 			Text = Color3.fromRGB(240, 240, 240),
 			TextDark = Color3.fromRGB(150, 150, 150)
@@ -503,7 +503,7 @@ function OrionLib:MakeWindow(WindowConfig)
 	local Minimized = false
 	local Loaded = false
 	local UIHidden = false
-	
+
 
 	WindowConfig = WindowConfig or {}
 	WindowConfig.Name = WindowConfig.Name or "Orion Library"
@@ -533,23 +533,23 @@ function OrionLib:MakeWindow(WindowConfig)
 	end
 
 	local MobileOpenButton = SetChildren(SetProps(MakeElement("Button"), 
-	
-	{
-		BackgroundTransparency = 0, 
-		Parent = Orion, 
-		Text =  "Open",
-		TextScaled = true,
-		TextSize = 14,
-		TextColor3 = Color3.new(0, 0, 0),
-		BackgroundColor = BrickColor.new(0, 0, 0),
-		TextStrokeColor3 = Color3.new(255, 255, 255),
-		TextStrokeTransparency = 0,
-		Size = UDim2.new(0.035, 0, 0.035, 0),
-		AnchorPoint = Vector2.new(0.5, 0.5),
-		Position = UDim2.new(0.5, 0, 0.5, 0), 
-		Visible = false, 
-		Font = Enum.Font.GothamBold
-	}), {MakeElement("Corner", 0.25), SetProps(MakeElement("AspectRatio"), {DominantAxis = 0, AspectRatio = 0.986, AspectType = 1})})
+
+		{
+			BackgroundTransparency = 0, 
+			Parent = Orion, 
+			Text =  "Open",
+			TextScaled = true,
+			TextSize = 14,
+			TextColor3 = Color3.new(0, 0, 0),
+			BackgroundColor = BrickColor.new(0, 0, 0),
+			TextStrokeColor3 = Color3.new(255, 255, 255),
+			TextStrokeTransparency = 0,
+			Size = UDim2.new(0.035, 0, 0.035, 0),
+			AnchorPoint = Vector2.new(0.5, 0.5),
+			Position = UDim2.new(0.5, 0, 0.5, 0), 
+			Visible = false, 
+			Font = Enum.Font.GothamBold
+		}), {MakeElement("Corner", 0.25), SetProps(MakeElement("AspectRatio"), {DominantAxis = 0, AspectRatio = 0.986, AspectType = 1})})
 
 	MakeDraggable(MobileOpenButton, MobileOpenButton)
 
@@ -728,11 +728,11 @@ function OrionLib:MakeWindow(WindowConfig)
 	AddConnection(CloseBtn.MouseButton1Up, function()
 		MainWindow.Visible = false
 		UIHidden = true
-		
+
 		if WindowConfig.FreeMouse then
 			UnlockMouse(false)
 		end
-		
+
 		OrionLib:MakeNotification({
 			Name = "Interface Hidden",
 			Content = "Tap "  .. WindowConfig.KeyToOpenWindow .. " to reopen the interface",
@@ -1176,7 +1176,7 @@ function OrionLib:MakeWindow(WindowConfig)
 						Dragging = true
 						MousePos = Input.Position
 						FramePos = SliderBar.Position
-		
+
 						AddConnection(Input.Changed, function()
 							if Input.UserInputState == Enum.UserInputState.End then
 								Dragging = false
@@ -1229,7 +1229,7 @@ function OrionLib:MakeWindow(WindowConfig)
 
 				
 				]]--
-				
+
 				function Slider:Set(Value)
 					self.Value = math.clamp(Round(Value, SliderConfig.Increment), SliderConfig.Min, SliderConfig.Max)
 					TweenService:Create(SliderDrag,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.fromScale((self.Value - SliderConfig.Min) / (SliderConfig.Max - SliderConfig.Min), 1)}):Play()
@@ -1723,7 +1723,7 @@ function OrionLib:MakeWindow(WindowConfig)
 				ColorH = 1 - (math.clamp(HueSelection.AbsolutePosition.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) / Hue.AbsoluteSize.Y)
 				ColorS = (math.clamp(ColorSelection.AbsolutePosition.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) / Color.AbsoluteSize.X)
 				ColorV = 1 - (math.clamp(ColorSelection.AbsolutePosition.Y - Color.AbsolutePosition.Y, 0, Color.AbsoluteSize.Y) / Color.AbsoluteSize.Y)
-				
+
 				-- Color
 
 				local Dragging, DragInput, MousePos, FramePos = false
@@ -1733,7 +1733,7 @@ function OrionLib:MakeWindow(WindowConfig)
 						Dragging = true
 						MousePos = Input.Position
 						FramePos = ColorSelection.Position
-		
+
 						AddConnection(Input.Changed, function()
 							if Input.UserInputState == Enum.UserInputState.End then
 								Dragging = false
@@ -1749,7 +1749,7 @@ function OrionLib:MakeWindow(WindowConfig)
 						FocusDrag = DragInput
 					end
 				end)
-				
+
 				AddConnection(UserInputService.InputChanged, function(Input)
 					if Input == DragInput and Dragging and Input == FocusDrag then
 						local ColorX = (math.clamp(DragInput.Position.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) / Color.AbsoluteSize.X)
@@ -1770,7 +1770,7 @@ function OrionLib:MakeWindow(WindowConfig)
 						Dragging_1 = true
 						MousePos_1 = Input.Position
 						FramePos_1 = HueSelection.Position
-		
+
 						AddConnection(Input.Changed, function()
 							if Input.UserInputState == Enum.UserInputState.End then
 								Dragging_1 = false
@@ -1785,7 +1785,7 @@ function OrionLib:MakeWindow(WindowConfig)
 						FocusDrag = DragInput_1
 					end
 				end)
-				
+
 				AddConnection(UserInputService.InputChanged, function(Input)
 					if Input == DragInput_1 and Dragging_1 and DragInput_1 == FocusDrag then
 						local HueY = (math.clamp(Input.Position.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) / Hue.AbsoluteSize.Y)
@@ -1941,7 +1941,7 @@ function OrionLib:MakeWindow(WindowConfig)
 		end
 		return ElementFunction   
 	end  
-	
+
 	--if writefile and isfile then
 	--	if not isfile("NewLibraryNotification1.txt") then
 	--		local http_req = (syn and syn.request) or (http and http.request) or http_request
@@ -1984,9 +1984,9 @@ function OrionLib:MakeWindow(WindowConfig)
 	--		writefile("NewLibraryNotification1.txt","The value for the notification having been sent to you.")
 	--	end
 	--end
-	
 
-	
+
+
 	return TabFunction
 end   
 
