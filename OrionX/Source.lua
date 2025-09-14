@@ -4,7 +4,7 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
-local SelectedTheme = _G.Orion_Theme or "Default"
+local SelectedThemes = _G.Orion_Theme or "Default"
 local OrionLib = {
 	Elements = {},
 	ThemeObjects = {},
@@ -28,7 +28,7 @@ local OrionLib = {
 			TextDark = Color3.fromRGB(150, 150, 150)
 		}
 	},
-	SelectedTheme = SelectedTheme,
+	SelectedTheme = SelectedThemes,
 	Folder = nil,
 	SaveCfg = false
 }
