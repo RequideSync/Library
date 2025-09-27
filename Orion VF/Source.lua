@@ -19,6 +19,62 @@ local OrionLib = {
 			Divider = Color3.fromRGB(60, 60, 60),
 			Text = Color3.fromRGB(240, 240, 240),
 			TextDark = Color3.fromRGB(150, 150, 150)
+		},
+		Bliz_T = {
+			Main = Color3.fromRGB(0, 0, 0),
+			Second = Color3.fromRGB(20, 20, 20),
+			Stroke = Color3.fromRGB(100, 150, 255),
+			Divider = Color3.fromRGB(80, 120, 200),
+			Text = Color3.fromRGB(180, 220, 255),
+			TextDark = Color3.fromRGB(150, 180, 230)
+		},
+		Chili = {
+			Main = Color3.fromRGB(0, 0, 0),
+			Second = Color3.fromRGB(20, 20, 20),
+			Stroke = Color3.fromRGB(255, 100, 100),
+			Divider = Color3.fromRGB(200, 80, 80),
+			Text = Color3.fromRGB(255, 180, 180),
+			TextDark = Color3.fromRGB(230, 150, 150)
+		},
+		Forest = {
+			Main = Color3.fromRGB(10, 40, 10),
+			Second = Color3.fromRGB(20, 60, 20),
+			Stroke = Color3.fromRGB(50, 200, 50),
+			Divider = Color3.fromRGB(40, 160, 40),
+			Text = Color3.fromRGB(180, 255, 180),
+			TextDark = Color3.fromRGB(120, 200, 120)
+		},
+		Sunset = {
+			Main = Color3.fromRGB(50, 20, 0),
+			Second = Color3.fromRGB(80, 40, 10),
+			Stroke = Color3.fromRGB(255, 100, 50),
+			Divider = Color3.fromRGB(200, 80, 40),
+			Text = Color3.fromRGB(255, 180, 150),
+			TextDark = Color3.fromRGB(230, 140, 110)
+		},
+		Ocean = {
+			Main = Color3.fromRGB(0, 20, 50),
+			Second = Color3.fromRGB(0, 40, 80),
+			Stroke = Color3.fromRGB(50, 150, 255),
+			Divider = Color3.fromRGB(40, 120, 200),
+			Text = Color3.fromRGB(180, 220, 255),
+			TextDark = Color3.fromRGB(120, 160, 200)
+		},
+		Candy = {
+			Main = Color3.fromRGB(50, 0, 50),
+			Second = Color3.fromRGB(80, 20, 80),
+			Stroke = Color3.fromRGB(255, 100, 255),
+			Divider = Color3.fromRGB(200, 80, 200),
+			Text = Color3.fromRGB(255, 180, 255),
+			TextDark = Color3.fromRGB(220, 150, 220)
+		},
+		Retro = {
+			Main = Color3.fromRGB(30, 30, 60),
+			Second = Color3.fromRGB(50, 50, 100),
+			Stroke = Color3.fromRGB(255, 200, 50),
+			Divider = Color3.fromRGB(200, 160, 40),
+			Text = Color3.fromRGB(255, 240, 180),
+			TextDark = Color3.fromRGB(200, 180, 120)
 		}
 	},
 	SelectedTheme = "Default",
@@ -215,6 +271,16 @@ local function SetTheme()
 			Object[ReturnProperty(Object)] = OrionLib.Themes[OrionLib.SelectedTheme][Name]
 		end    
 	end    
+end
+
+-- Add SetTheme function to OrionLib
+function OrionLib.SetTheme(themeName)
+	if OrionLib.Themes[themeName] then
+		OrionLib.SelectedTheme = themeName
+		SetTheme()
+	else
+		warn("[OrionLib] Theme '" .. tostring(themeName) .. "' does not exist.")
+	end
 end
 
 local function PackColor(Color)
@@ -842,7 +908,7 @@ function OrionLib:MakeWindow(WindowConfig)
 			Time = 10
 		})
 	end
-	
+
 	function OrionLib.SetTitle(Title)
 		WindowName.Text = Title
 	end
@@ -1093,7 +1159,7 @@ function OrionLib:MakeWindow(WindowConfig)
 					TweenService:Create(ToggleBox.Ico, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = Toggle.Value and 0 or 1, Size = Toggle.Value and UDim2.new(0, 20, 0, 20) or UDim2.new(0, 8, 0, 8)}):Play()
 					ToggleConfig.Callback(Toggle.Value)
 				end
-				
+
 				function Toggle:SetName(Name)
 					ToggleFrame.Content.Text = Name
 				end
@@ -2011,3 +2077,4 @@ function OrionLib:Destroy()
 end
 
 return OrionLib
+
