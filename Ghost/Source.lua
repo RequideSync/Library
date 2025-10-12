@@ -3292,7 +3292,7 @@ function UILibrary.Window:setAnimSpeed(val)
 end
 
 function UILibrary.Window:SetTitle(Title)
-	self.MainUI.Title.Text = Title
+	self.MainUI.Watermark.Text = Title
 end
 
 function UILibrary.Window:Notification(sett)
