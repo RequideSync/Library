@@ -3265,7 +3265,7 @@ function UILibrary.new(gameName, userId, rank)
 	local Drag = Draggable.Drag(window.MainUI, Frame)
 
 	--// Customize the GUI
-	window.Watermark.Text = ("%s | %s | %s"):format(_G.Title, userId, gameName)
+	window.Watermark.Text = ("GhostHub V4 | %s | %s"):format(userId, gameName)
 	local userinfo = window.MainUI.Sidebar.ContentHolder.UserInfo.Content
 	userinfo.Rank.Text = rank
 	userinfo.Title.Text = userId
