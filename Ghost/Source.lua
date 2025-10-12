@@ -3291,6 +3291,10 @@ function UILibrary.Window:setAnimSpeed(val)
 	TI = TweenInfo.new(.4 / (val / 100), Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
 end
 
+function UILibrary.Window:SetTitle(Title)
+	self.MainUI.Title.Text = Title
+end
+
 function UILibrary.Window:Notification(sett)
 	local Notif = objectGenerator.new("Notification").Main
 
