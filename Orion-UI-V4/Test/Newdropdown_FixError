@@ -1549,7 +1549,6 @@ function OrionLib:MakeWindow(WindowConfig)
 						GreenStroke.Transparency = 1 -- Start invisible
 						GreenStroke.Parent = OptionFrame
 						OptionFrame.GreenStroke = GreenStroke
-						OptionBtn.GreenStroke = GreenStroke -- これ残してもOK
 
 						AddConnection(OptionBtn.MouseButton1Click, function()
 							Dropdown:Set(type(Option) == "table" and (Option.Value or topText) or Option)
