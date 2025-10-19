@@ -1625,8 +1625,8 @@ function OrionLib:MakeWindow(WindowConfig)
 							TweenService:Create(optButton,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BackgroundTransparency = 1}):Play()
 							if optButton.OptionFrame and optButton.OptionFrame.TopLabel then TweenService:Create(optButton.OptionFrame.TopLabel,TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextTransparency = 0.4}):Play() end
 							-- Hide green stroke if present
-							if optButton.OptionFrame and optButton.OptionFrame.GreenStroke then
-								optButton.OptionFrame.GreenStroke.Transparency = 1
+							if optButton.OptionFrame and optButton.OptionFrame:FindFirstChildWhichIsA("UIStroke") then
+								optButton.OptionFrame:FindFirstChildWhichIsA("UIStroke").Transparency = 1
 							end
 						end
 					end	
