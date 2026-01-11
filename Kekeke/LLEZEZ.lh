@@ -1,6 +1,7 @@
 -- DcusUI Series
 -- by iksuwu
 -- Morten UI
+-- Nwe
 local UIS = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local Player = game:GetService("Players").LocalPlayer
@@ -21,7 +22,7 @@ function Library:New(config)
 	self.Gui = Create("ScreenGui", {
 		Name = "DcusHub_v2.3 UI",
 		ResetOnSpawn = false,
-		Parent = Player:WaitForChild("PlayerGui")
+		Parent = gethui()
 	})
 
 	self.Main = Create("Frame", {
@@ -203,11 +204,11 @@ function Library:New(config)
 		local title = config.Title or "Notification"
 		local content = config.Content or "Notification Content"
 		local duration = config.Time or 5
-		local NotifGui = Player:WaitForChild("PlayerGui"):FindFirstChild("DcusNotifications")
+		local NotifGui = gethui():FindFirstChild("DcusNotifications")
 		if not NotifGui then
 			NotifGui = Create("ScreenGui", {
 				Name = "DcusNotifications",
-				Parent = Player:WaitForChild("PlayerGui"),
+				Parent = gethui(),
 				ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 			})
 		end
